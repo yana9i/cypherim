@@ -1,0 +1,69 @@
+.form-holder {
+  align-items: center;
+  display: flex;
+  height: 80vh;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+.form-holder:hover{
+  opacity: 1;
+}
+
+.form-warpper {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: rgb(0 0 0 / 66%) 6px 12px 10px 0px
+}
+
+#bgDiv {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation-delay: 0s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  z-index: 0;
+}
+
+@keyframes fadein {
+    0% { 
+      opacity: 0; 
+      filter: blur(3px);
+      background-position-y: 3vh;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% { 
+      background-position-y: 0vh;
+      filter: blur(0px);
+      z-index: 0;
+    }
+}
+
+#typelogo {
+  position: fixed;
+  color: white;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Helvetica Neue';
+  font-weight: 900;
+  font-size: xx-large;
+  text-shadow: 3px 2px 3px #000000bf;
+}

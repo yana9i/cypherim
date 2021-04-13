@@ -27,23 +27,17 @@ export default io => {
 
   io.use(logger);
 
-  io.use(auth);
+  io.use(auth(io));
 
   io.on(ioEvent.conn, socket => {
 
-    console.log(`User ${socket.userInfo.username} connected`);
-
-    // socket.broadcast.emit(ioEvent.iq, new IoArgs('userLogin', {
-    //   userId: socket.userId,
-    //   username: socket.username
-    // }));
+    console.log(`User ${socket.userInfo.username} on ${socket.id} connected`);
 
     socket.on(ioEvent.iq, onInfoQuery(socket))
 
     socket.on(ioEvent.msg, onMessage(socket));
 
     socket.on(ioEvent.dcon, onDisconnect(socket));
-
 
   });
 }

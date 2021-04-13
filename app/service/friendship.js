@@ -4,7 +4,6 @@ import friendships from '../model/userFriendship.js';
 
 const createFriendshipRequest = async ({ userHostId, userFriendId }) => {
   const isFriendship = await isFriendshipExist({ userHostId, userFriendId });
-  console.log(isFriendship);
   if (!isFriendship) {
     const createResult = await friendships.create({
       userHostId,

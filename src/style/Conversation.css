@@ -1,0 +1,49 @@
+.message-other {
+
+}
+
+.message-sys {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.message-self {
+  margin-left:auto;
+  margin-right: .25rem;
+}
+
+.message-self,.message-box {
+  width: fit-content;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  max-width: 80%;
+  hyphens: auto;
+  margin-top: 5px;
+  margin-bottom: .5rem;
+  padding: .5rem;
+  box-shadow: 2px 2px 4px 0px #00000029;
+  border-radius: 5px;
+}
+
+.messages-holder {
+  flex: auto;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.messages-input {
+ flex:none;
+}
+
+.messages-toolbar {
+  display: flex;
+  padding: 0;
+  margin-bottom: .5rem 
+}
+
+
+textarea {
+  resize: none;
+}

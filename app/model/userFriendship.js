@@ -27,9 +27,8 @@ friendshipSchema.statics = {
     return await this
       .find({ userHostId: userId, pending: false })
       .select('userFriendId nickname pending')
-      .populate({ path: 'userFriendId', select: 'username _id' })
+      .populate({ path: 'userFriendId', select: 'username _id avatar' })
       .map(items => items.map(item => {
-        console.log(items);
         return {
           username: item.userFriendId.username,
           _id: item.userFriendId._id,

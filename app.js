@@ -1,7 +1,7 @@
 'use strict';
 
-import Koa from 'koa';
-import { createServer } from 'http';
+import Koa from 'koa'
+import { createServer as createHttpServer } from 'http';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
 import { Server as socketIO } from 'socket.io';
@@ -14,7 +14,7 @@ const port = 3000;
 
 const app = new Koa();
 
-const httpServer = createServer(app.callback())
+const httpServer = createHttpServer(app.callback());
 const io = new socketIO(httpServer, {
   cors: {
     origin: "*",
@@ -34,7 +34,6 @@ app.use(router.allowedMethods());
 
 initIO(io);
 
-//等价于 app.listen(port);
 httpServer.listen(port, () => {
   console.log(`Listen on port ${port}`);
 });

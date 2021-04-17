@@ -105,7 +105,7 @@ function Conversation(props) {
                 }}
                 i18n={{
                   search: '查找',
-                  clear: '清除', // Accessible label on "clear" button
+                  clear: '清除',
                   notfound: '未找到表情',
                   skintext: '选择默认肤色',
                   categories: {
@@ -124,38 +124,6 @@ function Conversation(props) {
 
             </div>
           )}
-
-          {/* {props => (
-            <Picker
-              {...props}
-              exclude={["flags"]}
-              native={true}
-              title={"选择表情"}
-              sheetSize={32}
-              showPreview={false}
-              onSelect={emoji => {
-                setOverlaysShow(false);
-                messageTextarea.current.value += emoji.native;
-              }}
-              i18n={{
-                search: '查找',
-                clear: '清除', // Accessible label on "clear" button
-                notfound: '未找到表情',
-                skintext: '选择默认肤色',
-                categories: {
-                  search: '查找结果',
-                  recent: '常用',
-                  smileys: '笑颜 & 感情',
-                  people: '人群 & 身体',
-                  nature: '动物 & 自然',
-                  foods: '食品 & 饮料',
-                  activity: '活动',
-                  places: '旅行 & 地点',
-                  objects: '物品',
-                  symbols: '符号',
-                }
-              }} />
-          )} */}
         </Overlay>
       </Col >
     )

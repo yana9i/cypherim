@@ -19,6 +19,7 @@ const io = new socketIO(httpServer, {
   cors: {
     origin: "*",
   },
+  maxHttpBufferSize: 1e8
 });
 
 app.use(logger())

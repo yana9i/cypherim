@@ -4,6 +4,7 @@ import { ioEvent } from '../../util/dictionary.js';
 import { IoArgs } from '../../util/ioEventArgsFormatter.js';
 
 import friendshipService from '../../service/friendship.js';
+import userChatlogStashService from '../../service/userChatlogStash.js';
 import redis from '../../util/redis.js';
 
 /** @param {import ('socket.io/dist/socket').Socket} socket  */
@@ -24,6 +25,12 @@ export default socket => args => {
       }));
       socket.emit(ioEvent.iq, new IoArgs('friendlist', friendlistWithOnline));
       friendlistOnlineSocketIds.forEach(item => socket.to(item).emit(ioEvent.iq, new IoArgs('loginSuccess', { from: socket.userInfo._id })));
+      const stashedChatlog = await userChatlogStashService.getUserChatlogStash(socket.userInfo._id);
+      stashedChatlog.forEach(item => {
+        const { from, to, message } = item;
+        socket.emit(ioEvent.msg, { from, to, message, type: 'plain' });
+        userChatlogStashService.delUserChatlogStash(item._id);
+      });
     },
     friendshipRequest: () => {
       console.log(args);

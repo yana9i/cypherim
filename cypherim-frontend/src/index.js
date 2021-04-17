@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './style/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'emoji-mart/css/emoji-mart.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

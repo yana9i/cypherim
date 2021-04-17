@@ -12,6 +12,12 @@
   margin-right: .25rem;
 }
 
+.message-image {
+  max-width: 100%;
+  height: 40vh;
+  background-size: cover;
+}
+
 .message-self,.message-box {
   width: fit-content;
   overflow-wrap: break-word;
@@ -40,7 +46,24 @@
 .messages-toolbar {
   display: flex;
   padding: 0;
-  margin-bottom: .5rem 
+  margin-bottom: .5rem;
+  align-items: center;
+}
+
+.messages-toolbar * {
+  margin-right: 5px;
+}
+
+.messages-toolbar :last-child {
+  margin-left: auto;
+}
+
+.messages-toolbar .success-info {
+  color: #07bc0c;
+}
+
+.messages-toolbar svg {
+  margin: auto auto;
 }
 
 

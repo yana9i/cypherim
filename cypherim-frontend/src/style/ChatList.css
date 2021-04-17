@@ -1,3 +1,25 @@
+.chat-list {
+  padding: 8px 0px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 200px;
+}
+
+.chat-list-users{
+  padding: 0px 8px 0px 0px;
+  overflow-y: scroll;
+  margin-bottom: 5px;
+}
+
+.chat-list-users::-webkit-scrollbar{
+  display: none;
+}
+
+.chat-list-user-filter {
+  margin-top: auto;
+  margin-right: .5rem;
+}
+
 .chat-item {
   height: 6rem;
   padding-left: .5rem;
@@ -12,6 +34,7 @@
   transition-property: box-shadow;
   transition-duration: .2s;
   background-color: white;
+  position: relative;
 }
 
 .chat-item-message {
@@ -27,6 +50,7 @@
 .chat-item-title,.chat-item-message {
   display: inline-block;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .chat-item:hover {
@@ -47,4 +71,14 @@
 
 .selected-chat-item {
   box-shadow: 2px 2px 5px 0px #0000007d;
+}
+
+.chat-item-message-notification {
+  position: absolute;
+  width: .75rem;
+  height: .75rem;
+  background-color: red;
+  border-radius: 50%;
+  top: .25rem;
+  left: .25rem;
 }

@@ -21,18 +21,6 @@
   height: calc(100% - 128px);
 }
 
-.chat-list {
-  flex: 1 0 200px;
-  padding: 8px;
-  overflow-y: scroll;
-}
-
-.chat-list::-webkit-scrollbar{
-  display: none;
-}
-
-
-
 .main-holder {
   flex: 3 1 500px;
   padding: 8px 8px 8px 0px;

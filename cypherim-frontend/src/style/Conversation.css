@@ -37,6 +37,7 @@
   background-color: white;
   border-radius: 5px;
   padding: 5px;
+  border: 1px solid #ced4da;
 }
 
 .messages-input {

@@ -15,6 +15,7 @@ import { ioEvent } from '../util/dictionary.js'
 import '../style/Chat.css';
 import '../style/ChatList.css';
 import '../style/Conversation.css';
+import '../style/ProfileSettings.css';
 import { toast } from 'react-toastify';
 
 

@@ -1,0 +1,51 @@
+.profile-settings-holder {
+    padding: 5px;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile-profile {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content:center;
+}
+
+.profile-profile-avatar {
+    min-width: 200px;
+    min-height: 200px;
+    width: 30vw;
+    height: 30vw;
+    max-width: 40vh;
+    max-height: 40vh;
+    margin-right: .5rem;
+    border-radius: .5rem;
+    box-shadow: 3px 4px 10px 2px #0000003a;
+    background-color: #0069d9;
+    background-size: cover;
+}
+
+.profile-profile-info {
+    width: 40%;
+    margin-left: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.profile-profile-info * {
+    display: flex;
+    flex-flow: row wrap;
+    font-weight: bold;
+}
+
+.profile-profile-info * * {
+    font-weight: normal;
+}

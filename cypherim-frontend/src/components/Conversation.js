@@ -129,7 +129,7 @@ function Conversation(props) {
     )
   }
 
-  const MessageHolder = () => { //需要重构
+  const MessageHolder = () => { 
     return (
       <div className="messages-holder" ref={messageHolder}>
         {JSON.stringify(props.selectedUser)}

@@ -49,3 +49,26 @@
 .profile-profile-info * * {
     font-weight: normal;
 }
+
+.profile-settings-button {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.profile-settings-button:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    width: 0;
+    height: .1px;
+    background: #000000;
+    transition: all .2s;
+}
+
+.profile-settings-button:hover::before{
+    width: 100%;
+    left: 0;
+    right: 0;
+}

@@ -18,12 +18,10 @@ const login = async ({ username, password }) => {
     if (result['password'] === crypthedPass) {
       const now = Date.now()
       await users.updateOne({ username }, { lastLoginTime: now });
-      return {
-        username: result['username'],
-        _id: result['_id'],
-        avatar: result['avatar'],
-        lastLoginTime: now,
-      }
+      const resultToReturn = result.toObject();
+      delete resultToReturn.__v;
+      delete resultToReturn.password;
+      return resultToReturn;
     } else {
       const err = new Error('Authorize Failed');
       err.statusCode = 403;
@@ -64,10 +62,20 @@ const getUserinfo = async ({ username, userId }) => {
   }
 }
 
-
+const updateUserInfo = async ({ userId, newUserInfo }) => {
+  const result = await users.findByIdAndUpdate(userId, newUserInfo, {
+    useFindAndModify: true,
+    new: true
+  }).exec();
+  const response = result.toObject();
+  delete response.__v;
+  delete response.password;
+  return response;
+}
 
 export default {
   login,
   regist,
   getUserinfo,
+  updateUserInfo
 }

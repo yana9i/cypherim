@@ -3,7 +3,7 @@ function ChatItem(props) {
 
   const avatarImg = () => {
     if (props.avatar) {
-      return `https://localhost:3000/api/img/${props.avatar}`
+      return `http://localhost:3000/api/img/avatar/${props.avatar}`
     } else {
       const canvas = document.createElement('canvas');
       canvas.width = 80;

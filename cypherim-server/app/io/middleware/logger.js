@@ -7,7 +7,7 @@
  */
 
 export default async (socket, next) => {
-  socket.onAny((event, ...args) => {
+  socket.onAny((event, args) => {
     console.log(`--> ${event}`, args, (new Date()));
   });
   await next();

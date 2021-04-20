@@ -6,6 +6,7 @@ import auth from './middleware/auth.js';
 import onMessage from './listener/message.js';
 import onDisconnect from './listener/disconnect.js'
 import onInfoQuery from './listener/infoquery.js';
+import onPresence from './listener/presence.js';
 
 import { ioEvent } from '../util/dictionary.js';
 
@@ -26,5 +27,6 @@ export default io => {
 
     socket.on(ioEvent.dcon, onDisconnect(socket));
 
+    socket.on(ioEvent.prs, onPresence(socket));
   });
 }

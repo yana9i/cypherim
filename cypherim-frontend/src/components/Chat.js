@@ -131,6 +131,30 @@ function Chat() {
         }
         setNewMessageNotification(args.from, true);
       });
+      socket.on(ioEvent.prs, args => {
+        switch (args.type) {
+          case 'selfProfileUpdate':
+            setState(s => {
+              s.loginUser = args.payload;
+              return { ...s }
+            });
+            break;
+          case 'profileUpdate':
+            setState(s => {
+              let index;
+              s.friendlist.find((item, ind) => {
+                index = ind;
+                return item._id === args.payload._id;
+              })
+              s.friendlist[index] = args.payload;
+              return { ...s };
+            })
+            break;
+          default:
+            break;
+        }
+
+      })
       socket.on("reconnect", () => {
         socket.emit(ioEvent.iq, { type: 'loginSuccess', payload: { from: state.loginUser._id } });
       })
@@ -139,6 +163,7 @@ function Chat() {
     return () => {
       socket.off(ioEvent.iq);
       socket.off(ioEvent.msg);
+      socket.off(ioEvent.prs);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

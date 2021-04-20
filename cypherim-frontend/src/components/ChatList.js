@@ -14,8 +14,8 @@ function ChatList(props) {
         <ChatItem
           selected={props.selectedUserId === props.loginUser._id}
           username={props.loginUser.username}
-          recentMsg={'我自己'}
-          avatar={props.loginUser.avater}
+          recentMsg={props.loginUser.signature || '设置签名档'}
+          avatar={props.loginUser.avatar}
           _id={props.loginUser._id}
           online={true}
           onItemClick={props.setClickedItem} />
@@ -32,7 +32,7 @@ function ChatList(props) {
               if (msgArr)
                 return Object.values(msgArr.slice(-1)[0])[0]
               return '';
-            })()}
+            })() || item.signature}
             key={item._id}
             _id={item._id}
             online={item.online}

@@ -5,7 +5,6 @@ import { createServer as createHttpServer } from 'http';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
 import { Server as socketIO } from 'socket.io';
-import serve from 'koa-static';
 
 
 import router from './app/router.js';
@@ -30,7 +29,6 @@ app.use(async (ctx, next) => {
   ctx.set("Access-Control-Allow-Headers", "content-type");
   await next()
 })
-app.use(serve('./static'))
 app.use(errorHandler())
 app.use(bodyParser());
 app.use(router.routes());

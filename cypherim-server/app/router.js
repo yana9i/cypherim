@@ -5,6 +5,8 @@ import Router from 'koa-router';
 import user from './controller/user.js';
 import session from './controller/session.js';
 import background from './controller/background.js';
+import send from 'koa-send';
+
 
 const router = new Router();
 
@@ -16,5 +18,9 @@ router.delete('/api/user/:id') //删除 id 用户（注销）
 
 router.get('/api/img/background', background.get)
 
+router.get('/api/img/avatar/:filename', async (ctx, next) => {
+  await send(ctx, ctx.params.filename, { root: './static/avatar' });
+  await next();
+});
 
 export default router;

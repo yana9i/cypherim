@@ -340,7 +340,7 @@ function Chat() {
 
   const selectConversation = selectedUserId => {
     if (selectedUserId === state.loginUser._id || selectedUserId === '') {
-      return <ProfileSettings loginUser={state.loginUser} />
+      return <ProfileSettings loginUser={state.loginUser} friendlist={state.friendlist} />
     } else {
       const chatlog = state.chatLogSet.get(selectedUserId) || [];
       const selectedUser = state.friendlist.find(item => item._id === selectedUserId);

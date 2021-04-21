@@ -11,7 +11,7 @@ function ProfileSetting(props) {
   const colXs = { span: 3 }
 
   const [form, setForm] = useState({
-    avatar: `http://localhost:3000/api/img/avatar/${props.loginUser.avatar}` || '',
+    avatar: props.loginUser.avatar ? `http://localhost:3000/api/img/avatar/${props.loginUser.avatar}` : '',
     nickname: props.loginUser.nickname || '',
     signature: props.loginUser.signature || '',
     password: '',
@@ -92,7 +92,7 @@ function ProfileSetting(props) {
                 <Form.Control type="text" placeholder="Password" hidden />
                 <AvatarEditor
                   ref={avatarEditor}
-                  image={form.avatar}
+                  image={form.avatar || ''}
                   width={150}
                   height={150}
                   border={5}

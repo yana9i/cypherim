@@ -28,7 +28,7 @@ export default socket => async args => {
 
       delete result.lastLoginTime;
       delete result.signUpTime;
-      const friendlist = await friendshipService.getFriendlist({ userHostId: socket.userInfo._id });
+      const friendlist = await friendshipService.getFriendlistById({ userHostId: socket.userInfo._id });
       friendlist.map(async item => {
         const socketId = await redis.get(item._id);
         const online = socketId !== null

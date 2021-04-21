@@ -12,7 +12,7 @@ import friendshipService from '../../service/friendship.js';
 export default socket => async () => {
   console.log(socket.userInfo.username + " disconnected");
 
-  const friendlist = await friendshipService.getFriendlist({ userHostId: socket.userInfo._id });
+  const friendlist = await friendshipService.getFriendlistById({ userHostId: socket.userInfo._id });
   await Promise.all(friendlist.map(async item => {
     const socketId = await redis.get(item._id);
     const online = socketId !== null

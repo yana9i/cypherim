@@ -39,6 +39,22 @@ friendshipSchema.statics = {
       })
       )
       .exec(cb);
+  },
+  findPendingRequestsByUserId: async function (userId, cb) {
+    return await this
+      .find({ userFriendId: userId, pending: true })
+      .select('userHostId nickname pending')
+      .populate({ path: 'userHostId', select: 'username _id avatar signature' })
+      .map(items => items.map(item => {
+        return {
+          username: item.userHostId.username,
+          _id: item.userHostId._id,
+          nickname: item.nickname,
+          avatar: item.userHostId.avatar,
+        }
+      })
+      )
+      .exec(cb);
   }
 }
 

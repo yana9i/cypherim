@@ -104,6 +104,16 @@
     animation-delay: 1s;
 }
 
+.profile-settings-button-notification {
+    position: absolute;
+    width: .75rem;
+    height: .75rem;
+    background-color: red;
+    border-radius: 50%;
+    top: -3px;
+    left: -10px;
+}
+
 @keyframes slidein {
   from {
     transform:translateX(0);
@@ -158,12 +168,41 @@
     font-size: small;
 }
 
-.user-hunt-list-item-avatar {
+.user-hunt-list-item-avatar,.nofification-list-holder .avatar  {
     width: 80px;
     height: 80px;
     border-radius: 10px;
-    display: block;
-    margin: 5px auto;
     background-color: #0069d9;
     background-size: cover;
+}
+
+.user-hunt-list-item-avatar {
+    display: block;
+    margin: 5px auto;
+}
+
+.nofification-list-holder .avatar  {
+    margin-right: .5rem;
+}
+
+.nofification-list-holder {
+    width: 100%;
+    height: 100%;
+}
+
+.nofification-list-holder .item {
+    width: 100%;
+    height: 8rem;
+    padding: .5rem 0;
+    display: flex;
+    align-items: center;
+    border-bottom: #00000042;
+    border-bottom-style: dotted;
+}
+
+.nofification-list-holder .buttons {
+    margin-left: auto;
+}
+.nofification-list-holder .buttons button{
+    margin: 0 .5rem;
 }

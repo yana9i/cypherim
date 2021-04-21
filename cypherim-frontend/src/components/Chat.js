@@ -43,7 +43,7 @@ function Chat() {
       signature: null
     },
     friendlist: [],
-    groupList: [],
+    friendshipRequestList: [],
     selectedUserId: '',
     chatLogSet: new Map(),
     publicKeySet: new Map(),
@@ -97,6 +97,12 @@ function Chat() {
           acceptCryptoChat: () => {
             addPublicKeySet(args.payload.from, args.payload.publicKey);
             setCryptoReqAccept(args.payload.from, 'other');
+          },
+          friendshipRequestList: () => {
+            setState(s => {
+              s.friendshipRequestList = args.payload
+              return { ...s }
+            })
           }
         }
         typeSwitch[args.type] && typeSwitch[args.type]()
@@ -340,7 +346,10 @@ function Chat() {
 
   const selectConversation = selectedUserId => {
     if (selectedUserId === state.loginUser._id || selectedUserId === '') {
-      return <ProfileSettings loginUser={state.loginUser} friendlist={state.friendlist} />
+      return <ProfileSettings
+        loginUser={state.loginUser}
+        friendlist={state.friendlist}
+        friendshipRequestList={state.friendshipRequestList} />
     } else {
       const chatlog = state.chatLogSet.get(selectedUserId) || [];
       const selectedUser = state.friendlist.find(item => item._id === selectedUserId);

@@ -42,9 +42,13 @@ const setNickname = async ({ userHostId, userFriendId, nickname }) => {
   return await friendships.findOneAndUpdate({ userHostId, userFriendId }, { nickname }, { new: true, useFindAndModify: true }).exec();
 };
 
-const getFriendlist = async ({ userHostId }) => {
+const getFriendlistById = async ({ userHostId }) => {
   return await friendships.findFriendByHostUserId(userHostId);
 };
+
+const getPendingRequestsById = async ({ userFriendId }) => {
+  return await friendships.findPendingRequestsByUserId(userFriendId);
+}
 
 const isFriendshipExist = async ({ userHostId, userFriendId }) => {
   const findResult = await friendships.find({ userHostId, userFriendId }).exec();
@@ -65,6 +69,7 @@ export default {
   rejectFriendshipRequest,
   acceptFriendshipRequest,
   setNickname,
-  getFriendlist,
+  getFriendlistById,
+  getPendingRequestsById,
   deleteFriendship
 }

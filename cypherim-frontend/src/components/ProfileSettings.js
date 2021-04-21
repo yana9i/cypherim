@@ -1,10 +1,11 @@
 
 import { useState } from 'react';
 
-import { ReactComponent as LeftArrow } from '../svg/left-arrow.svg'
+import { ReactComponent as LeftArrow } from '../svg/left-arrow.svg';
 
-import ProfileSetting from './ProfileSettings/ProfileSetting.js'
+import ProfileSetting from './ProfileSettings/ProfileSetting.js';
 import UserHunt from './ProfileSettings/UserHunt.js';
+import NotificationList from './ProfileSettings/NotificationList.js';
 
 import generateAvatarUrl from '../util/generateAvatarUrl.js'
 
@@ -27,7 +28,7 @@ function ProfileSettings(props) {
             <div>上次登录时间：<div>{(new Date(props.loginUser.lastLoginTime)).toLocaleString()}</div></div>
           </div>
         </div>
-        <div className='profile-settings-button' onClick={() => { setSwitcher('noti') }}>消息通知</div>
+        <div className='profile-settings-button' onClick={() => { setSwitcher('noti') }}>消息通知 {props.friendshipRequestList.length > 0 ? <div className="profile-settings-button-notification" /> : ''} </div>
         <div className='profile-settings-button' onClick={() => { setSwitcher('prof') }}>个人资料</div>
         <div className='profile-settings-button' onClick={() => { setSwitcher('hunt') }}>搜索用户</div>
       </>
@@ -44,7 +45,10 @@ function ProfileSettings(props) {
           if (switcher === 'prof')
             return <ProfileSetting loginUser={props.loginUser} />
           if (switcher === 'noti')
-            return 'noti'
+            return <NotificationList
+              friendshipRequestList={props.friendshipRequestList}
+              loginUserId={props.loginUser._id}
+            />
           if (switcher === 'hunt')
             return <UserHunt loginUser={props.loginUser} friendlist={props.friendlist} />
         })()}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { InputGroup, FormControl, Button, Spinner } from 'react-bootstrap';
 import { ioEvent } from '../../util/dictionary.js';
 
@@ -13,16 +13,13 @@ function UserHunt(props) {
 
   const [hint, setHint] = useState('暂无查询结果')
 
-  useEffect(() => {
-
-  }, [])
-
   const handleClick = () => {
-    if (input) {
+    const str = input.replace(/[`~!@#$^&*()=|{}':;',\\[\].<>/?~！@#￥……&*（）——|{}【】'；：""'。，、？\s]/g, "");
+    if (str) {
       setHint(<Spinner animation="border" variant="dark" size="xs" />)
       socket.emit(ioEvent.iq, {
         type: "userHunt",
-        keyword: input
+        keyword: str
       }, response => {
         setHuntList(response);
         if (response.length === 0)
@@ -32,7 +29,7 @@ function UserHunt(props) {
   }
 
   const requsetFriendship = id => {
-    console.log(id);
+    socket.emit(ioEvent.iq, { type: 'friendshipRequest', payload: { userHostId: props.loginUser._id, userFriendId: id } });
   }
 
 

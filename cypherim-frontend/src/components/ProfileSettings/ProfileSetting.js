@@ -80,7 +80,11 @@ function ProfileSetting(props) {
         <Form.Group as={Row} controlId="nickname">
           <Form.Label column xs={colXs} >昵称</Form.Label>
           <Col xs="7">
-            <Form.Control type="text" value={form.nickname} onChange={handleChange} placeholder='设置昵称' />
+            <Form.Control type="text"
+              value={form.nickname}
+              onChange={handleChange}
+              placeholder='设置昵称'
+            />
           </Col>
         </Form.Group>
 
@@ -144,28 +148,47 @@ function ProfileSetting(props) {
         <Form.Group as={Row} controlId="signature">
           <Form.Label column xs={colXs} >签名档</Form.Label>
           <Col xs="7">
-            <Form.Control value={form.signature} type="text" onChange={handleChange} placeholder="设置签名档" />
+            <Form.Control
+              value={form.signature}
+              type="text"
+              onChange={handleChange}
+              placeholder="设置签名档"
+            />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} controlId="password">
           <Form.Label column xs={colXs} >当前密码</Form.Label>
           <Col xs="7">
-            <Form.Control value={form.password} type="password" placeholder="当前密码" onChange={handleChange} />
+            <Form.Control
+              value={form.password}
+              type="password"
+              placeholder="当前密码"
+              onChange={handleChange}
+            />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} controlId="newpass">
           <Form.Label column xs={colXs} >新密码</Form.Label>
           <Col xs="7">
-            <Form.Control value={form.newpass} type="password" placeholder="新密码" onChange={handleChange} />
+            <Form.Control
+              value={form.newpass}
+              type="password"
+              placeholder="新密码"
+              onChange={handleChange} />
           </Col>
         </Form.Group>
 
         <Form.Group as={Row} controlId="confpass">
           <Form.Label column xs={colXs} >确认密码</Form.Label>
           <Col xs="7">
-            <Form.Control value={form.confpass} type="password" placeholder="确认密码" onChange={handleChange} />
+            <Form.Control
+              value={form.confpass}
+              type="password"
+              placeholder="确认密码"
+              onChange={handleChange}
+            />
           </Col>
         </Form.Group>
         <Row>

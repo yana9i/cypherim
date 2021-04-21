@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { ReactComponent as LeftArrow } from '../svg/left-arrow.svg'
 
 import ProfileSetting from './ProfileSettings/ProfileSetting.js'
+import UserHunt from './ProfileSettings/UserHunt.js';
+
+import generateAvatarUrl from '../util/generateAvatarUrl.js'
 
 
 function ProfileSettings(props) {
@@ -12,27 +15,7 @@ function ProfileSettings(props) {
 
   const ProfileHome = () => {
 
-    const avatarImg = () => {
-      if (props.loginUser.avatar) {
-        return `http://localhost:3000/api/img/avatar/${props.loginUser.avatar}`
-      } else {
-        const canvas = document.createElement('canvas');
-        canvas.width = 800;
-        canvas.height = 800;
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          ctx.fillStyle = "#fff";
-          ctx.font = "600px monosapce";
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'top';
-          const firstLetter = props.loginUser.username.charAt(0);
-          const measure = ctx.measureText(firstLetter);
-          const height = measure.actualBoundingBoxAscent + measure.actualBoundingBoxDescent;
-          ctx.fillText(firstLetter, 400, 400 - height / 2);
-          return canvas.toDataURL();
-        }
-      }
-    }
+    const avatarImg = () => generateAvatarUrl(800, 800, 600, props.loginUser.avatar, props.loginUser.username);
 
     return (
       <>
@@ -63,7 +46,7 @@ function ProfileSettings(props) {
           if (switcher === 'noti')
             return 'noti'
           if (switcher === 'hunt')
-            return 'hunt'
+            return <UserHunt loginUser={props.loginUser} friendlist={props.friendlist} />
         })()}
       </div>
     </div>

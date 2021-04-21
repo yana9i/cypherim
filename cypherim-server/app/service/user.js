@@ -3,6 +3,7 @@
 import crypto from 'crypto';
 
 import users from '../model/user.js';
+import mongoose from 'mongoose'
 
 const md5 = password => crypto.createHash('md5').update(password).digest('hex');
 
@@ -73,9 +74,26 @@ const updateUserInfo = async ({ userId, newUserInfo }) => {
   return response;
 }
 
+const huntUserByUsername = async (keyword) => {
+  const formatStr = str => {
+    if (mongoose.Types.ObjectId.isValid(keyword))
+      return str;
+    return '0'.repeat(24);
+  }
+  const regex = new RegExp(keyword, 'i');
+  const result = await users.find({
+    $or: [
+      { username: { $regex: regex } },
+      { _id: formatStr(keyword) }
+    ]
+  }).select(' -__v -signUpTime -lastLoginTime -password').exec();
+  return result;
+}
+
 export default {
   login,
   regist,
   getUserinfo,
-  updateUserInfo
+  updateUserInfo,
+  huntUserByUsername
 }
